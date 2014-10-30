@@ -1,0 +1,41 @@
+#!/bin/bash
+# build: build script for creating video from PHP Git sources and SVN repository
+
+git clone git://github.com/php/php-src.git
+
+gource \
+    --background 000000 \
+    --hide filenames,dirnames,mouse \
+    --logo ./images/logo.png \
+    --logo-offset 10x10 \
+    --title "20 years of PHP Development Visualization" \
+    --date-format "%d %B %Y" \
+    --font-size 26 \
+    --caption-file ./captions.txt \
+    --seconds-per-day 0.01 \
+    -1920x1080 \
+    -e 0.02 \
+    --bloom-multiplier 1.0 \
+    --bloom-intensity 0.5 \
+    --highlight-all-users \
+    --auto-skip-seconds 0.5 \
+    --key \
+    -o ./video/php.ppm \
+    ./php-src
+
+ffmpeg \
+    -y \
+    -r 60 \
+    -f image2pipe \
+    -vcodec ppm \
+    -i ./video/php.ppm \
+    -i ./music/music.mp3 \
+    -vcodec libx264 \
+    -preset ultrafast \
+    -pix_fmt yuv420p \
+    -crf 1 \
+    -threads 0 \
+    -bf 0 \
+    ./video/php.mp4
+
+
