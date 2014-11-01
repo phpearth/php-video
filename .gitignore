@@ -1,3 +1,5 @@
 /php-src
 /video/*
 !video/.gitkeep
+/logs/*
+!logs/.gitkeep
