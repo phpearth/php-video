@@ -1,0 +1,34 @@
+#!/bin/bash
+# build: build script for creating video from PHP Git sources and SVN repository
+
+gource \
+    --background 000000 \
+    --hide dirnames,filenames,mouse \
+    --date-format "%d %B %Y" \
+    --font-size 26 \
+    --seconds-per-day 0.1 \
+    -1920x1080 \
+    -e 0.02 \
+    --bloom-multiplier 1.0 \
+    --bloom-intensity 0.5 \
+    --highlight-all-users \
+    --auto-skip-seconds 0.5 \
+    --key \
+    --start-date '2014-07-25' \
+    --stop-date '2014-08-29' \
+    -o ./video/php_8.ppm \
+    ./logs/svn-log.txt
+
+ffmpeg \
+    -y \
+    -r 60 \
+    -f image2pipe \
+    -vcodec ppm \
+    -i ./video/php_8.ppm \
+    -vcodec libx264 \
+    -preset ultrafast \
+    -pix_fmt yuv420p \
+    -crf 1 \
+    -threads 0 \
+    -bf 0 \
+    ./video/php_8.mp4
