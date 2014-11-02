@@ -5,7 +5,7 @@ Files and settings to produce a PHP source code evolution from SVN and Git repos
 ## Usage
 
 ```
-$ ./build
+$ ./bin/build
 ```
 
 ## Requirements
