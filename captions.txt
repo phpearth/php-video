@@ -1,4 +1,4 @@
-802655999 |PHP Tools release - 8 June 1995
+802655999 |PHP Tools released - 8 June 1995
 878428799 |PHP 2.0 released - 1 November 1997
 897177599 |PHP 3.0 released - 6 june 1998
 959039999 |PHP 4.0 released - 22 May 2000
