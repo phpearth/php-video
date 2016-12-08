@@ -2,4 +2,4 @@
 /video/*
 !video/.gitkeep
 /logs/*
-!logs/.gitkeep
+!/logs/.gitkeep
